@@ -1,12 +1,51 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
 
 Route::get('cron', 'CronController@cron')->name('cron');
+
+
+
+
+
+
+
+
+
+Route::get('/import', function(){
+    $file = fopen(public_path().'/ft_editable.csv', 'r');
+    $header = fgetcsv($file);
+    while ($row = fgetcsv($file)) {
+        $data = array_combine($header, $row);
+        //Check if username already exists
+        $user = DB::table('users')->where('username', $data['username'])->first();
+        if(!$user){
+            DB::table('users')->insert([
+                'firstname' => $data['firstname'],
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'mobile' => $data['mobile'],
+                'country_code' => $data['country_code'],
+                'deposit_wallet' => $data['deposit_wallet'],
+                'phone_of_sponsor' => $data['phone_of_sponsor'],
+                'address' => $data['address'],
+                'password' => Hash::make('12345678')
+            ]);
+        }
+    }
+    fclose($file);
+    return 'Import Successful';
+});
+
+
+
+
 
 // User Support Ticket
 Route::controller('TicketController')->prefix('ticket')->name('ticket.')->group(function () {
@@ -48,4 +87,5 @@ Route::controller('SiteController')->group(function () {
 
     Route::get('/{slug}', 'pages')->name('pages');
     Route::get('/', 'index')->name('home');
+    
 });
