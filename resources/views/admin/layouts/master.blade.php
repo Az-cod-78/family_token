@@ -21,6 +21,8 @@
 
 
     @stack('style')
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
 @yield('content')

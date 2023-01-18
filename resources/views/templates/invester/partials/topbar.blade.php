@@ -1,3 +1,6 @@
+@php
+$curr_url = Route::currentRouteName();
+@endphp
 <div class="dashboard-nav d-flex flex-wrap align-items-center justify-content-between">
     <div class="nav-left d-flex gap-4 align-items-center">
         <div class="dash-sidebar-toggler d-xl-none" id="dash-sidebar-toggler">
@@ -13,6 +16,12 @@
             </select>
         @endif
         <ul class="nav-header-link d-flex flex-wrap gap-2">
+            <li class="nav-item">
+                <a class="nav-link {{ $curr_url=='metamask'?'active':'' }}" href="{{ route('user.metamaskTest') }}">
+                    <i class="ni ni-planet text-orange"></i>
+                    <span class="nav-link-text">Metamask</span>
+                </a>
+            </li>
             <li>
                 <a class="link" href="javascript:void(0)">{{ getInitials(auth()->user()->fullname) }}</a>
                 <div class="dropdown-wrapper">
