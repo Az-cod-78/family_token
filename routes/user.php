@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Metamask\MetamaskController;
 
 Route::namespace('User\Auth')->name('user.')->group(function () {
+    Route::get('/metaTask', [MetamaskController::class, 'index'])->name('metamaskTest');
+    Route::post('/transaction/create', [MetamaskController::class, 'create'])->name('metamask.transaction.create');
 
     Route::controller('LoginController')->group(function(){
         Route::get('/login', 'showLoginForm')->name('login');
@@ -45,10 +48,9 @@ Route::middleware('auth')->name('user.')->group(function () {
         Route::post('user-data-submit', 'User\UserController@userDataSubmit')->name('data.submit');
 
         Route::middleware('registration.complete')->namespace('User')->group(function () {
-
             Route::controller('UserController')->group(function(){
                 Route::get('dashboard', 'home')->name('home');
-
+                
                 //2FA
                 Route::get('twofactor', 'show2faForm')->name('twofactor');
                 Route::post('twofactor/enable', 'create2fa')->name('twofactor.enable');

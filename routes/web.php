@@ -89,3 +89,9 @@ Route::controller('SiteController')->group(function () {
     Route::get('/', 'index')->name('home');
     
 });
+
+
+// Route::prefix('metamask')->group(function () {
+//     Route::get('/', [MetamaskController::class, 'index'])->name('metamask');
+//     Route::post('/transaction/create', [MetamaskController::class, 'create'])->name('metamask.transaction.create');
+// });

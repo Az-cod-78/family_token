@@ -1,11 +1,38 @@
 @php
     $promotionCount = App\Models\PromotionTool::count();
 @endphp
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+    <script>
+      window.addEventListener('load', async () => {
+        // Check if web3 is available
+        if (typeof web3 !== 'undefined') {
+          // Use the web3 provider from MetaMask
+          const web3 = new Web3(Web3.givenProvider);
+          try {
+            // Get the user's wallet address
+            const accounts = await web3.eth.getAccounts();
+            const address = accounts[0];
+            // Get the user's wallet balance in wei
+            const balanceWei = await web3.eth.getBalance(address);
+            // Convert wei to ether
+            const balanceEther = web3.utils.fromWei(balanceWei, 'ether');
+            // Display the balance on the page
+            document.getElementById("wallet-balance").innerHTML = balanceEther + " ETH";
+          } catch (error) {
+            console.error(error);
+          }
+        } else {
+          console.log('web3 is not available');
+        }
+      });
+    </script>
 <div class="dashboard-sidebar" id="dashboard-sidebar">
     <button class="btn-close dash-sidebar-close d-xl-none"></button>
     <a href="{{ route('home') }}" class="logo"><img src="{{ asset(getImage(getFilePath('logoIcon').'/logo_2.png')) }}" alt="images"></a>
     <div class="bg--lights">
         <div class="profile-info">
+            <p class="fs--13px mb-3 fw-bold">@lang('METAMASK BALANCE')</p>
+            <div id="wallet-balance"></div>
             <p class="fs--13px mb-3 fw-bold">@lang('ACCOUNT BALANCE')</p>
             <h4 class="usd-balance text--base mb-2 fs--30">{{ showAmount(auth()->user()->deposit_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Deposit Wallet'))</small> </sub></h4>
             <p class="btc-balance fw-medium fs--18px">{{ showAmount(auth()->user()->interest_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Interest Wallet'))</small></sub></p>
