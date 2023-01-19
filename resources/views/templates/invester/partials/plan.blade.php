@@ -171,7 +171,7 @@
             if (plan.fixed_amount > 0) {
                 modal.find('.investAmountRange').text(`Invest: ${symbol}${fixedAmount}`);
                 modal.find('[name=amount]').val(parseFloat(plan.fixed_amount).toFixed(2));
-                modal.find('[name=amount]').attr('readonly',true);
+                modal.find('[name=amount]').attr('readonly',false);
             }else{
                 modal.find('.investAmountRange').text(`Invest: ${symbol}${minimumAmount} - ${symbol}${maximumAmount}`);
                 modal.find('[name=amount]').val('');
@@ -219,6 +219,31 @@
         });
     })(jQuery);
 </script>
+<script>
+    $(document).ready(function(){
+        $('[name=amount]').on('input',function(){
+            $('[name=wallet_type]').trigger('change');
+        })
+
+        $('[name=wallet_type]').change(function () {
+            var amount = $('[name=amount]').val();
+            if($(this).val() != 'deposit_wallet' && $(this).val() != 'interest_wallet' && amount){
+                var resource = $('select[name=wallet_type] option:selected').data('gateway');
+                var fixed_charge = parseFloat(resource.fixed_charge);
+                var percent_charge = parseFloat(resource.percent_charge);
+                var charge = parseFloat(fixed_charge + (amount * percent_charge / 100)).toFixed(2);
+                $('.charge').text("$" + charge);
+                $('[name=amount]').on('input', function() {
+                var amount = $(this).val();
+                var result = amount * 24;
+                $('.investAmountRange').text("$" + result);
+                $('.total').text("$" + (result + parseFloat(charge)));
+                });
+            }
+        });
+    });
+</script>
+
 @endpush
 
 
