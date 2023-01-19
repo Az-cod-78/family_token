@@ -10,53 +10,16 @@
         <button type="button" onClick="startProcess()" class="btn btn-success">Pay Now</button>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12" style="margin-top:100px;">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Transactions</h5>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>TxHash</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($transactions as $key => $transaction)
-                        <tr>
-                            <td scope="row">{{ $key+1 }}</td>
-                            <td>{{ $transaction->txHash }}</td>
-                            <td>{{ $transaction->amount }} ETH</td>
-                            <td>
-                                @switch($transaction->status)
-                                @case(1)
-                                <span class="badge badge-warning">Pending</span>
-                                @break
-                                @case(2)
-                                <span class="badge badge-success">Success</span>
-                                @break
-                                @case(3)
-                                <span class="badge badge-danger">Declined</span>
-                                @break
-                                @endswitch
-                            </td>
-                        </tr>
-                        @empty
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection
 @push('js')
+
+@endpush
 <script>
     function startProcess() {
-        if ($('#inp_amount').val() > 0) {
+        if (document.getElementsByName("amount")[0].value > 0) {
+            console.log($('#inp_amount').val())
+
             // run metamsk functions here
             EThAppDeploy.loadEtherium();
         } else {
@@ -104,14 +67,14 @@
                     method: 'eth_sendTransaction',
                     params: [{
                         from: from,
-                        to: "0x6cA0323B6DB3bbC5331614b1E5aFf01C0b1771d6",
+                        to: "0x83F631C87e686d9f6147aC5EFF02c736ddF92bFe",
                         value: '0x' + ((amount * 1000000000000000000).toString(16)),
                     }, ],
                 })
                 .then((txHash) => {
                     if (txHash) {
                         console.log(txHash);
-                        storeTransaction(txHash, amount);
+                        // storeTransaction(txHash, amount);
                     } else {
                         console.log("Something went wrong. Please try again");
                     }
@@ -126,23 +89,23 @@
      * @param Transaction id
      *
      */
-    function storeTransaction(txHash, amount) {
-        $.ajax({
-            url: "{{ route('user.metamask.transaction.create') }}",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'POST',
-            data: {
-                txHash: txHash,
-                amount: amount,
-            },
-            success: function (response) {
-                // reload page after success
-                window.location.reload();
-            }
-        });
-    }
+    // function storeTransaction(txHash, amount) {
+    //     $.ajax({
+    //         url: "{{ route('user.metamask.transaction.create') }}",
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         type: 'POST',
+    //         data: {
+    //             txHash: txHash,
+    //             amount: amount,
+    //         },
+    //         success: function (response) {
+    //             // reload page after success
+    //             window.location.reload();
+    //         }
+    //     });
+    // }
 
 </script>
-@endpush
+<script src="{{asset('web3.min.js')}}"></script>

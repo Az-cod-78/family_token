@@ -36,9 +36,9 @@ class MetamaskController extends Controller
      */
     public function create(Request $request)
     {
-        return  Metamask_transaction::create([
-            "txHash" => $request->txHash,
-            "amount" => $request->amount,
-        ]);
+        // return  Metamask_transaction::create([
+        //     "txHash" => $request->txHash,
+        //     "amount" => $request->amount,
+        // ]);
     }
 }
