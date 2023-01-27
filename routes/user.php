@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Metamask\MetamaskController;
+use App\Http\Controllers\Nft\NftrentController;
 
 Route::namespace('User\Auth')->name('user.')->group(function () {
     Route::get('/metaTask', [MetamaskController::class, 'index'])->name('metamaskTest');
     Route::post('/transaction/create', [MetamaskController::class, 'create'])->name('metamask.transaction.create');
+
+    Route::get('/nft-shop', [NftrentController::class, 'index'])->name('nftrent');
 
     Route::controller('LoginController')->group(function(){
         Route::get('/login', 'showLoginForm')->name('login');
