@@ -61,7 +61,7 @@
          * Do Payment
          * */
         payNow: async (ethereum, from) => {
-            var amount = $('#inp_amount').val();
+            var amount = document.getElementsByName("amount")[0].value;
             ethereum
                 .request({
                     method: 'eth_sendTransaction',
