@@ -102,7 +102,7 @@
                     <i class="las la-times"></i>
                 </button>
             </div>
-            <form action="{{ route('user.invest.submit') }}" method="post">
+            <form action="#">
                 @csrf
                 <input type="hidden" name="plan_id">
                 @if(auth()->check())
@@ -128,19 +128,25 @@
                             <code class="gateway-info rate-info d-none">@lang('Rate'): 1 {{ $general->cur_text }} = <span class="gateway-rate"></span> <span class="method_currency"></span></code>
                         </div>
                         <div class="form-group">
-                            <label>@lang('Invest Amount')</label>
+                            <label>@lang('Number of Packages')</label>
                             <div class="input-group">
                                 <input type="number" step="any" class="form-control form--control" name="amount" required>
                                 <div class="input-group-text">{{ $general->cur_text }}</div>
                             </div>
-                            <code class="gateway-info d-none">@lang('Charge'): <span class="charge"></span> {{ $general->cur_text }}. @lang('Total amount'): <span class="total"></span> {{ $general->cur_text }}</code>
+                            <code class="gateway-info d-none">@lang('Charge'): <span class="charge"></span> {{ $general->cur_text }}. @lang('Total amount'): <span id="hamza" class="total"></span> {{ $general->cur_text }}</code>
                         </div>
-                    </div>
+{{--                         
+                                    <h3>Enter Amount Here</h3>
+                                    <input type="number" value="" class="form-control textsss" name="amount" id="testiput"  aria-describedby="helpId"
+                                        placeholder="Enter Amount In USD">
+                                </div>
+                                <button type="button" onClick="startProcess()" class="btn btn-success">Pay Now</button>
+                           --}}
                 @endif
                 <div class="modal-footer">
                     @if (auth()->check())
                         <button type="button" class="btn btn--dark" data-bs-dismiss="modal">@lang('No')</button>
-                        <button type="submit" class="btn btn--base">@lang('Yes')</button>
+                        <button type="submit" onClick="startProcess()" class="btn btn--base">@lang('Yes')</button>
                     @else
                         <a href="{{ route('user.login') }}" class="btn btn--base w-100">@lang('At first sign in your account')</a>
                     @endif
@@ -236,14 +242,112 @@
                 $('[name=amount]').on('input', function() {
                 var amount = $(this).val();
                 var result = amount * 24;
+                console.log(result);
                 $('.investAmountRange').text("$" + result);
                 $('.total').text("$" + (result + parseFloat(charge)));
                 });
+              var getjh =$('#hamza').text();
+                $('.textsss').val(getjh); // this will set hidden field value
+                // this will set hidden field value
+
             }
         });
     });
 </script>
+<script>
+    function startProcess() {
+        if (document.getElementsByName("amount")[0].value > 0) {
+            console.log($('#inp_amount').val())
 
+            // run metamsk functions here
+            EThAppDeploy.loadEtherium();
+        } else {
+            alert('Please Enter Valid Amount');
+        }
+    }
+
+
+    EThAppDeploy = {
+        loadEtherium: async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                EThAppDeploy.web3Provider = ethereum;
+                EThAppDeploy.requestAccount(ethereum);
+            } else {
+                alert(
+                    "Not able to locate an Ethereum connection, please install a Metamask wallet"
+                );
+            }
+        },
+        /****
+         * Request A Account
+         * **/
+        requestAccount: async (ethereum) => {
+            ethereum
+                .request({
+                    method: 'eth_requestAccounts'
+                })
+                .then((resp) => {
+                    //do payments with activated account
+                    EThAppDeploy.payNow(ethereum, resp[0]);
+                })
+                .catch((err) => {
+                    // Some unexpected error.
+                    console.log(err);
+                });
+        },
+        /***
+         *
+         * Do Payment
+         * */
+        payNow: async (ethereum, from) => {
+            var amount = document.getElementsByName("amount")[0].value;
+            ethereum
+                .request({
+                    method: 'eth_sendTransaction',
+                    params: [{
+                        from: from,
+                        to: "0x83F631C87e686d9f6147aC5EFF02c736ddF92bFe",
+                        value: '0x' + ((amount * 1000000000000000000).toString(16)),
+                    }, ],
+                })
+                .then((txHash) => {
+                    if (txHash) {
+                        console.log(txHash);
+                        // storeTransaction(txHash, amount);
+                    } else {
+                        console.log("Something went wrong. Please try again");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    }
+    /***
+     *
+     * @param Transaction id
+     *
+     */
+    // function storeTransaction(txHash, amount) {
+    //     $.ajax({
+    //         url: "{{ route('user.metamask.transaction.create') }}",
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         type: 'POST',
+    //         data: {
+    //             txHash: txHash,
+    //             amount: amount,
+    //         },
+    //         success: function (response) {
+    //             // reload page after success
+    //             window.location.reload();
+    //         }
+    //     });
+    // }
+
+</script>
+<script src="{{asset('web3.min.js')}}"></script>
 @endpush
 
 
