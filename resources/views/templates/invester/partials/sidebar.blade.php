@@ -45,8 +45,8 @@
     <ul class="sidebar-menu">
         <li><a href="{{ route('user.home') }}" class="{{ menuActive('user.home') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/dashboard.png') }}" alt="icon"> @lang('Dashboard')</a></li>
         <li><a href="{{ route('user.invest.statistics') }}" class="{{ menuActive(['user.invest.statistics', 'user.invest.log', 'plan']) }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/investment.png') }}" alt="icon"> @lang('Investments')</a></li>
-        <li><a href="{{ route('user.deposit.index') }}" class="{{ menuActive('user.deposit*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/wallet.png') }}" alt="icon"> @lang('Deposit')</a></li>
-        <li><a href="{{ route('user.withdraw') }}" class="{{ menuActive('user.withdraw*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/withdraw.png') }}" alt="icon"> @lang('Withdraw')</a></li>
+        {{-- <li><a href="{{ route('user.deposit.index') }}" class="{{ menuActive('user.deposit*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/wallet.png') }}" alt="icon"> @lang('Deposit')</a></li>
+        <li><a href="{{ route('user.withdraw') }}" class="{{ menuActive('user.withdraw*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/withdraw.png') }}" alt="icon"> @lang('Withdraw')</a></li> --}}
         @if($general->b_transfer)
         <li><a href="{{ route('user.transfer.balance') }}" class="{{ menuActive('user.transfer.balance') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/balance-transfer.png') }}" alt="icon"> @lang('Transfer Balance')</a></li>
         @endif
@@ -58,8 +58,8 @@
 
         <li><a href="{{ route('ticket.index') }}" class="{{ menuActive(['ticket', 'ticket.view', 'ticket.open']) }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/ticket.png') }}" alt="icon"> @lang('Support Ticket')</a></li>
         <li><a href="{{ route('user.twofactor') }}" class="{{ menuActive('user.twofactor') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/2fa.png') }}" alt="icon"> @lang('2FA')</a></li>
-        <li><a href="{{ route('user.profile.setting') }}" class="{{ menuActive('user.profile.setting') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/profile.png') }}" alt="icon"> @lang('Profile')</a></li>
+        {{-- <li><a href="{{ route('user.profile.setting') }}" class="{{ menuActive('user.profile.setting') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/profile.png') }}" alt="icon"> @lang('Profile')</a></li>
         <li><a href="{{ route('user.change.password') }}" class="{{ menuActive('user.change.password') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/password.png') }}" alt="icon"> @lang('Change Password')</a></li>
-        <li><a href="{{ route('user.logout') }}" class="{{ menuActive('user.logout') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/logout.png') }}" alt="icon"> @lang('Logout')</a></li>
+        <li><a href="{{ route('user.logout') }}" class="{{ menuActive('user.logout') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/logout.png') }}" alt="icon"> @lang('Logout')</a></li> --}}
     </ul>
 </div>

@@ -9,7 +9,7 @@ $curr_url = Route::currentRouteName();
     </div>
     <div class="nav-right d-flex flex-wrap align-items-center gap-3">
         @if ($general->language_switch)
-            <select name="langSel" class="langSel form--control h-auto px-2 py-1 border-0">
+            <select name="langSel" class="langSel form--control h-auto px-2 py-1 border-0" style="color: black !important">
                 @foreach($language as $item)
                     <option value="{{$item->code}}" @if(session('lang') == $item->code) selected  @endif>{{ __($item->name) }}</option>
                 @endforeach
@@ -17,11 +17,14 @@ $curr_url = Route::currentRouteName();
         @endif
         <ul class="nav-header-link d-flex flex-wrap gap-2">
             <li class="nav-item">
+                <a href="{{ route('user.nftrent') }}" class="nav-link"> @lang('NFT E-Shop')</a>
+            </li>
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ $curr_url=='metamask'?'active':'' }}" href="{{ route('user.metamaskTest') }}">
                     <i class="ni ni-planet text-orange"></i>
                     <span class="nav-link-text">Metamask</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a class="link" href="javascript:void(0)">{{ getInitials(auth()->user()->fullname) }}</a>
                 <div class="dropdown-wrapper">
