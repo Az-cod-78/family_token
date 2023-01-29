@@ -9,6 +9,10 @@ Route::namespace('User\Auth')->name('user.')->group(function () {
     Route::post('/transaction/create', [MetamaskController::class, 'create'])->name('metamask.transaction.create');
 
     Route::get('/nft-shop', [NftrentController::class, 'index'])->name('nftrent');
+    Route::post('/nft/purchase', [NftrentController::class, 'purchase'])->name('nft.purchase');
+
+
+
 
     Route::controller('LoginController')->group(function(){
         Route::get('/login', 'showLoginForm')->name('login');
