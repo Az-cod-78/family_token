@@ -16,9 +16,12 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="text-center mt-2">@lang('You have requested') <b class="text--success">{{ showAmount($data['amount'])  }} {{__($general->cur_text)}}</b> , @lang('Please pay')
-                                    <b class="text--success">{{showAmount($data['final_amo']) .' '.$data['method_currency'] }} </b> @lang('for successful payment')
+                                <p class="text-center mt-2">@lang('You have requested') <b class="text--success">{{ showAmount($data['amount'])  }} @lang('FT')</b> , @lang('Please pay')
+                                    <b class="text--success">{{showAmount($data['final_amo']) }} @lang('USD') </b> @lang('for successful payment')
                                 </p>
+                                {{-- <p class="text-center mt-2">@lang('You have requested') <b class="text--success">{{ showAmount($data['amount'])  }} {{__($general->cur_text)}}</b> , @lang('Please pay')
+                                    <b class="text--success">{{showAmount($data['final_amo']) .' '.$data['method_currency'] }} </b> @lang('for successful payment')
+                                </p> --}}
 
                                 <div class="my-4">
                                     <p>@php echo  $data->gateway->description @endphp</p>

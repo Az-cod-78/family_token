@@ -64,7 +64,51 @@
                                 </li>
                             </ul>
                         </div>
+                        <a href="#" class="btn btn--base w-100 mt-3">@lang('Pay with Credit Card')</a>
                         <button type="submit" class="btn btn--base w-100 mt-3">@lang('Submit')</button>
+                        <div class="mt-3">
+                            <p>1. BTC, please use the Bitcoin network and address below:</p>
+                            <span class="mb-3" style="font-weight: 800">13YckxbufPiymWt7wqwUi89v8ywYp8UFpQ</span>
+                            
+                            
+                            <p>2. ETH, please use the ERC20 network and address below:</p>
+
+                            
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+
+                            
+                            <p>3. LTC, please use the Litecoin network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">LKKsUHEUyiNM7zWMDHcemiiuoKxLnV8Exd</span>
+
+                            <p>4. USDT, please use the ERC20 network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+
+                            <p>5. BUSD, please use the BEP20 network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+
+                            <p>6. XRP, please use the BEP20 network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+
+                            <p>7. TRX, please use the TRC20 network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">TByPgDKJiajbFgtq2jZ8AKh46QVLLAC34c</span>
+
+                            <p>8. SOL, please use the SOL network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">6GjMt5NTTWGL3yZq7RrJRuvMP8Kz892etKuR4EPjnJGF</span>
+
+                            <p>9. MATIC, please use the MATICPolygon network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+
+                            <p>10. BNB, please use the BEP20 network and address below:</p>
+
+                            <span class="mb-3" style="font-weight: 800">0x5f8c90120a8668dd3e64bad2254c8c4a1505f711</span>
+                        </div>
                     </div>
                 </div>
             </form>

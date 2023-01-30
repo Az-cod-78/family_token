@@ -2,8 +2,8 @@
 @section('content')
 <div class="dashboard-inner">
     <div class="mb-4">
-        <p>@lang('Investment')</p>
-        <h3>@lang('All Investment')</h3>
+        {{-- <p>@lang('Investment')</p> --}}
+        <h3>@lang('Rented NFT')</h3>
     </div>
     <div class="row gy-4">
         <div class="col-md-5">
@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
                         <div>
-                            <p class="mb-2 fw-bold">@lang('Total Invest')</p>
+                            <p class="mb-2 fw-bold">@lang('Total Rent')</p>
                             <h4 class="text--base"><sup class="top-0 fw-light me-1">{{ $general->cur_sym }}</sup>{{ showAmount(auth()->user()->invests->sum('amount')) }}</h4>
                         </div>
                         <div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     @else
-                    <h3 class="text-center">@lang('No Investment Found Yet')</h3>
+                    <h3 class="text-center">@lang('No Rented NFT Found Yet')</h3>
                     @endif
                 </div>
             </div>

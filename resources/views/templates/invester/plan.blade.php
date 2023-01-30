@@ -19,7 +19,7 @@
                             <p class="card-text">Profit will start after 9 days and will expire on the 90th day.</p>
                             <div class="row mt-3 mb-3">
                                 <div class="col-sm-6">
-                                    <span>Investment</span>
+                                    <span>Total Rented</span>
                                 </div>
                                 <div class="col-sm-6">
                                     <p>$24FT</p>
@@ -41,7 +41,7 @@
                                     <p>Unlimited</p>
                                 </div>
                             </div>
-                            <a href="#" class="cmn--btn plan-btn btn mt-2">Rent NFT</a>
+                            <a href="#" class="cmn--btn plan-btn btn mt-2">Withdraw</a>
                           </div>
                         </div>
                     </div>

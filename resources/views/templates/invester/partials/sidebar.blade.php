@@ -35,7 +35,7 @@
             <div id="wallet-balance"></div> --}}
             <p class="fs--13px mb-3 fw-bold">@lang('ACCOUNT BALANCE')</p>
             <h4 class="usd-balance text--base mb-2 fs--30">{{ showAmount(auth()->user()->deposit_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Deposit Wallet'))</small> </sub></h4>
-            <p class="btc-balance fw-medium fs--18px">{{ showAmount(auth()->user()->interest_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Interest Wallet'))</small></sub></p>
+            <p class="btc-balance fw-medium fs--18px">{{ showAmount(auth()->user()->interest_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Rent Generated'))</small></sub></p>
             <div class="mt-4 d-flex flex-wrap gap-2">
                 <a href="{{ route('user.deposit.index') }}" class="btn btn--base btn--smd">@lang('Buy FT')</a>
                 <style>
@@ -59,7 +59,7 @@
     </div>
     <ul class="sidebar-menu">
         <li><a href="{{ route('user.home') }}" class="{{ menuActive('user.home') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/dashboard.png') }}" alt="icon"> @lang('Dashboard')</a></li>
-        <li><a href="{{ route('user.invest.statistics') }}" class="{{ menuActive(['user.invest.statistics', 'user.invest.log', 'plan']) }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/investment.png') }}" alt="icon"> @lang('Investments')</a></li>
+        <li><a href="{{ route('user.invest.statistics') }}" class="{{ menuActive(['user.invest.statistics', 'user.invest.log', 'plan']) }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/investment.png') }}" alt="icon"> @lang('Rented NFTs')</a></li>
         {{-- <li><a href="{{ route('user.deposit.index') }}" class="{{ menuActive('user.deposit*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/wallet.png') }}" alt="icon"> @lang('Deposit')</a></li>
         <li><a href="{{ route('user.withdraw') }}" class="{{ menuActive('user.withdraw*') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/withdraw.png') }}" alt="icon"> @lang('Withdraw')</a></li> --}}
         @if($general->b_transfer)
