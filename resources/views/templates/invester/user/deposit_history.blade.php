@@ -3,9 +3,9 @@
     <div class="dashboard-inner">
         <div class="mb-4">
             <div class="d-flex justify-content-between">
-                <h3 class="mb-2">@lang('Deposit History')</h3>
+                <h3 class="mb-2">@lang('Purchase History')</h3>
                 <span>
-                    <a href="{{ route('user.deposit.index') }}" class="btn btn--secondary btn--smd">@lang('Deposit Now') <i class="las la-long-arrow-alt-right"></i></a>
+                    <a href="{{ route('user.deposit.index') }}" class="btn btn--secondary btn--smd">@lang('Purchase Now') <i class="las la-long-arrow-alt-right"></i></a>
                 </span>
             </div>
         </div>

@@ -4,11 +4,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="mb-4">
-                <h3 class="mb-2">@lang('Deposit Funds')</h3>
-                <p>@lang('Add funds using our system\'s gateway. The deposited amount will be credited to the deposit wallet. You\'ll just make investments from this wallet.')</p>
+                <h3 class="mb-2">@lang('Buy Family Token')</h3>
+                {{-- <p>@lang('Add funds using our system\'s gateway. The deposited amount will be credited to the deposit wallet. You\'ll just make investments from this wallet.')</p> --}}
+                <p>@lang('Enter the number of token you want to purchase and send Transection ID and Screenshot of you reciept. The transfer will be done within 24 hours.')</p>
             </div>
             <div class="text-end mb-3">
-                <a href="{{ route('user.deposit.history') }}" class="btn btn--secondary btn--smd"><i class="las la-long-arrow-alt-left"></i> @lang('Deposit History')</a>
+                <a href="{{ route('user.deposit.history') }}" class="btn btn--secondary btn--smd"><i class="las la-long-arrow-alt-left"></i> @lang('Purchase History')</a>
             </div>
             <form action="{{route('user.deposit.insert')}}" method="post">
                 @csrf
@@ -19,7 +20,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">@lang('Select Gateway')</label>
+                                    <label class="form-label">@lang('Tokens')</label>
                                     <select class="form-select form-control form--control" name="gateway" required>
                                         <option value="">@lang('Select One')</option>
                                         @foreach($gatewayCurrency as $data)
@@ -30,7 +31,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label">@lang('Amount')</label>
+                                    <label class="form-label">@lang('Number of Tokens')</label>
                                     <div class="input-group">
                                         <input type="number" step="any" name="amount" class="form-control form--control" value="{{ old('amount') }}" autocomplete="off" required>
                                         <span class="input-group-text">{{ $general->cur_text }}</span>

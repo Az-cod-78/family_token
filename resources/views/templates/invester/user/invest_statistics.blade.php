@@ -20,8 +20,8 @@
                         </div>
                     </div>
                     <div class="d-flex flex-wrap justify-content-between mt-3 mt-sm-4 gap-2">
-                        <a href="{{ route('plan') }}" class="btn btn--sm btn--base">@lang('Invest Now') <i class="las la-arrow-right fs--12px ms-1"></i></a>
-                        <a href="{{ route('user.withdraw') }}" class="btn btn--sm btn--secondary">@lang('Withdraw Now') <i class="las la-arrow-right fs--12px ms-1"></i></a>
+                        {{-- <a href="{{ route('plan') }}" class="btn btn--sm btn--base">@lang('Invest Now') <i class="las la-arrow-right fs--12px ms-1"></i></a>
+                        <a href="{{ route('user.withdraw') }}" class="btn btn--sm btn--secondary">@lang('Withdraw Now') <i class="las la-arrow-right fs--12px ms-1"></i></a> --}}
                     </div>
                 </div>
             </div>

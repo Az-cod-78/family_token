@@ -31,14 +31,29 @@
     <a href="{{ route('home') }}" class="logo"><img src="{{ asset(getImage(getFilePath('logoIcon').'/logo_2.png')) }}" alt="images"></a>
     <div class="bg--lights">
         <div class="profile-info">
-            <p class="fs--13px mb-3 fw-bold">@lang('METAMASK BALANCE')</p>
-            <div id="wallet-balance"></div>
+            {{-- <p class="fs--13px mb-3 fw-bold">@lang('METAMASK BALANCE')</p>
+            <div id="wallet-balance"></div> --}}
             <p class="fs--13px mb-3 fw-bold">@lang('ACCOUNT BALANCE')</p>
             <h4 class="usd-balance text--base mb-2 fs--30">{{ showAmount(auth()->user()->deposit_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Deposit Wallet'))</small> </sub></h4>
             <p class="btc-balance fw-medium fs--18px">{{ showAmount(auth()->user()->interest_wallet) }} <sub class="top-0 fs--13px">{{ $general->cur_text }} <small>(@lang('Interest Wallet'))</small></sub></p>
             <div class="mt-4 d-flex flex-wrap gap-2">
-                <a href="{{ route('user.deposit.index') }}" class="btn btn--base btn--smd">@lang('Deposit')</a>
-                <a href="{{ route('user.withdraw') }}" class="btn btn--secondary btn--smd">@lang('Withdraw')</a>
+                <a href="{{ route('user.deposit.index') }}" class="btn btn--base btn--smd">@lang('Buy FT')</a>
+                <style>
+                  .disabled-button {
+                    pointer-events: none;
+                    opacity: 0.6;
+                  }
+                </style>
+                
+                @php
+                  $currentDay = date('j');
+                @endphp
+                
+                @if ($currentDay == 1 || $currentDay == 15)
+                  <a href="{{ route('user.withdraw') }}" class="btn btn--secondary btn--smd">@lang('Withdraw')</a>
+                @else
+                  <a href="#" class="btn btn--secondary btn--smd disabled-button">@lang('Withdraw')</a>
+                @endif
             </div>
         </div>
     </div>
@@ -58,6 +73,7 @@
 
         <li><a href="{{ route('ticket.index') }}" class="{{ menuActive(['ticket', 'ticket.view', 'ticket.open']) }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/ticket.png') }}" alt="icon"> @lang('Support Ticket')</a></li>
         <li><a href="{{ route('user.twofactor') }}" class="{{ menuActive('user.twofactor') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/2fa.png') }}" alt="icon"> @lang('2FA')</a></li>
+        <li><a href="{{ route('user.kyc.form') }}" class="{{ menuActive('user.kyc.form') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/2fa.png') }}" alt="icon"> @lang('KYC-Form')</a></li>
         {{-- <li><a href="{{ route('user.profile.setting') }}" class="{{ menuActive('user.profile.setting') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/profile.png') }}" alt="icon"> @lang('Profile')</a></li>
         <li><a href="{{ route('user.change.password') }}" class="{{ menuActive('user.change.password') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/password.png') }}" alt="icon"> @lang('Change Password')</a></li>
         <li><a href="{{ route('user.logout') }}" class="{{ menuActive('user.logout') }}"><img src="{{ asset($activeTemplateTrue.'/images/icon/logout.png') }}" alt="icon"> @lang('Logout')</a></li> --}}
