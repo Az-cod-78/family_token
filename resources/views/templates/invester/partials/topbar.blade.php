@@ -17,7 +17,7 @@ $curr_url = Route::currentRouteName();
         @endif
         <ul class="nav-header-link d-flex flex-wrap gap-2">
             <li class="nav-item">
-                <a href="{{ route('user.nftrent') }}" class="nav-link"> @lang('NFT E-Shop')</a>
+                <a href="{{ route('user.nftrent') }}" class="nav-link btn btn--secondary" style="padding: 5px 10px;font-size: 13px;"> @lang('NFT E-Shop')</a>
             </li>
             {{-- <li class="nav-item">
                 <a class="nav-link {{ $curr_url=='metamask'?'active':'' }}" href="{{ route('user.metamaskTest') }}">
