@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Nft\NftrentController;
 Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
 
 Route::get('cron', 'CronController@cron')->name('cron');
 
-
+Route::post('/nft/purchase', [NftrentController::class, 'purchase'])->name('nft.purchase');
 
 
 
