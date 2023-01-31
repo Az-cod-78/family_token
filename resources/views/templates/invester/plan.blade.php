@@ -9,8 +9,8 @@
                     </div>
                 </div>
                 <div class="row gy-4">
-                    {{-- @include($activeTemplate.'partials.plan', ['plans' => $plans]) --}}
-                    <div class="col-sm-4">
+                    @include($activeTemplate.'partials.plan', ['plans' => $plans])
+                    {{-- <div class="col-sm-4">
                         <div class="card text-center">
                           <div class="card-body">
                             <h4 class="card-title">Pool-1 - Deposit Wallet</h4>
@@ -76,7 +76,7 @@
                                     <p>Unlimited</p>
                                 </div>
                             </div>
-                            {{-- <a href="{{ route('plan') }}" class="cmn--btn plan-btn btn mt-2" >Invest Now</a> --}}
+                            <a href="{{ route('plan') }}" class="cmn--btn plan-btn btn mt-2" >Invest Now</a>
                           </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                     <p>Unlimited</p>
                                 </div>
                             </div>
-                            {{-- <a href="{{ route('plan') }}" class="cmn--btn plan-btn btn mt-2" >Invest Now</a> --}}
+                            <a href="{{ route('plan') }}" class="cmn--btn plan-btn btn mt-2" >Invest Now</a>
                           </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             <a href="#" class="cmn--btn plan-btn btn mt-2">Buy NFT</a>
                           </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
