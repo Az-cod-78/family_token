@@ -350,4 +350,3 @@
 <script src="{{asset('web3.min.js')}}"></script>
 @endpush
 
-
